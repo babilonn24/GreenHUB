@@ -1,0 +1,436 @@
+/* You can add global styles to this file, and also import other style files */
+body,html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body,html * {
+    margin: 0;
+    padding: 0;
+}
+
+.img-center {
+    height:300px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.zoom-in {
+    overflow: hidden;
+    position: relative;
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-top-right-radius: calc(0.25rem - 1px);
+}
+
+.zoom-in img {
+    transition: all 0.5s ease;
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-top-right-radius: calc(0.25rem - 1px);
+}
+
+.zoom-in:hover img {
+    transform: scale(1.2);
+}
+
+.card-hover:hover {    
+    transform: scale(1.05);
+    transition: transform 0.1s ease;
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-top-right-radius: calc(0.25rem - 1px);
+    /*transition-delay: 0.1s;*/
+}
+
+.img-border {
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+}
+
+.carousel-button {
+    background-color: #4780a1;
+    opacity: 0.8;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-control-prev{
+    left: 15px;
+}
+
+.carousel-control-next{
+    right: 15px;
+}
+
+.carousel-indicators {
+    left: 0;
+    top: auto;
+    bottom: -35px;
+}
+  
+.carousel-indicators .active {
+    background-color:#3a3a3a 
+}
+
+.product-category {    
+    position: absolute;
+    font-size: 12cm;
+    background-color: cadetblue;
+    color: white; 
+    margin-left: 8px;
+    margin-top: 10px;
+    padding: 5px;
+    width: auto;    
+}
+
+.product-price-number {
+    font-size: 1.4rem;
+    padding-bottom: 5px;
+}
+
+.product-price-number-blue {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #4780a1;
+    padding-bottom: 5px;
+    /*color: #66c0f4;*/
+}
+
+.product-discounted {
+    position: absolute;
+    width: auto;
+    bottom: 4px;
+    right: 4px;
+}
+
+.product-price-discounted {
+    font-size: 1.2rem;
+    color: #838383;
+    text-decoration: line-through;
+    text-decoration-color: #838383;
+}
+
+.product-discount-number {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color:white;
+    padding: 0px 10px;
+}
+
+.product-discount {
+    position: absolute;
+    width: auto;
+    background-color: #5c940d;
+    top: 85%;
+    right: 0%;
+}
+
+.long-text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;  
+}
+
+.white-image {
+    filter: brightness(0) invert(1);
+    width: 22px;
+    height: 22px;
+}
+
+.cart-button {
+    padding-top: 2px;
+    border: none;
+    cursor: pointer;
+    /*width:50px;*/
+}
+
+.cart-tittle {
+    padding-right: 40px;
+}
+
+.delete-item-button {
+    padding-top: 2px;
+    position: absolute;
+    border: none;
+    cursor: pointer;
+    bottom: 10px;
+    right: 10px;
+}
+
+/*Go up button Animation*/
+@keyframes goUpAnimation {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.8);
+    }
+}
+
+/*Fade in Animation*/
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+.go-up-button .white-image {
+    transition: transform 0.2s ease-in-out;
+}
+
+.go-up-button:hover .white-image {
+    animation: goUpAnimation 1s infinite;
+}
+
+.img-product-view {
+    height:450px;
+    width: 100%;
+    object-fit: cover;
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-bottom-left-radius: calc(0.25rem - 1px);
+}
+
+.card-product-view {
+    padding: 8px;
+    margin: 8px;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-productor-view {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 24px;
+    padding-right: 24px;
+    margin: 8px;
+    border: none;
+    text-align: center;
+    color: #4780a1;
+    background-color: #fce0bc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-weight: 500;
+}
+
+.card-productor-view:hover {
+    font-weight: bold;
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: transform 0.1s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.card-price-view {
+    padding: 8px;
+    margin: 8px;
+}
+
+.card-price-number-view {
+    font-size: 1.8rem;
+    color: #545758;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.card-price-number-view-blue {
+    font-size: 1.8rem;
+    color: #4780a1;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.card-price-number-original-view {
+    font-size: 1.4rem;
+    color: #838383;
+    text-decoration: line-through;
+    text-decoration-color: #838383;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;   
+}
+
+.product-discount-view {
+    font-size: 1rem;
+    background-color: #5c940d;
+}
+
+.product-img-container {
+    position: relative;
+    display: inline-block;
+}
+
+/*mi-usuario*/
+.profile-picture-small {
+    height:350px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.profile-picture-large {
+    height:350px;
+    width: 350px;
+    display: block; 
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    object-fit: cover;
+    border-top: 10px solid #ffffff;
+    border-left: 10px solid #ffffff;
+    border-right: 10px solid #ffffff;
+    border-bottom: 25px solid #ffffff;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.profile-label {
+    font-size: 1rem;
+    background-color: #212529;
+    color: #fff;
+}
+
+.profile-container {
+    padding: 8px;
+    margin: 8px;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.fade-in {
+    animation: fadeIn 0.5s;
+}
+
+.view-caption {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+
+.category-img {
+    height: 220px;
+    width: 220px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.card-category {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.card-category-body {
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-top: 4px;
+    margin-left: 8px;
+    margin-right: 8px;
+    text-align: center;
+    font-size: 1.5rem;
+    transition: font-weight 0.3s ease;
+}
+
+.card-category:hover{
+    transform: scale(1.05);
+    transition: transform 0.1s ease;
+}
+
+.card-category:hover img{
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.card-category:hover p{
+    transform: scale(1.05);
+    transition: transform 0.1s ease;
+    color: #4780a1;
+    font-weight: bold;
+}
+
+.zoom-in-product {
+    position: absolute;
+    cursor: pointer;
+    bottom: 15px;
+    right: 15px;
+}
+
+.zoom-in-button {
+    height: 48px;
+    width: 48px;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.zoom-in-img {
+    height: 25px;
+    width: 25px;
+}
+
+.zoom-in-button:hover {
+    transform: scale(1.1);
+    transition: transform 0.1s ease;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.category-img-container {
+    position: relative;
+    display: inline-block;    
+    background: #000000;
+    padding: 0px;
+}
+
+.category-label {
+    height: 150px;
+    width: 70%;
+    object-fit: cover;
+    float: right;
+}
+
+.category-img-container::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 30%;
+    bottom: 0px;
+    width: 40%;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+}
+
+.category-img-name {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0));
+    z-index: 1;
+}
+
+.category-img-name p{
+    padding-left: 25px;
+    padding-bottom: 10px;
+    color: #ffffff;
+    font-size: 5rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chatbot-container{
+    position: fixed;
+    bottom: 22px;
+    right: 30px;
+    z-index: 2;
+}

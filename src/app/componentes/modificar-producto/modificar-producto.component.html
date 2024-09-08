@@ -1,0 +1,85 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-4 d-flex align-items-center justify-content-start">          
+      <img [src]="imagen || 'https://www.ludlowjute.com/wp-content/uploads/2023/12/Jute_Reusable.jpg'" class="img-center img-border" alt="productPicture">
+    </div>
+
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="mb-4">Editar Producto</h1>
+
+          <form>
+            <div class="mb-3">
+              <input class="form-control" type="file" (change)=cargarImagen($event)>              
+              <div *ngIf="imagenPesada"> Maximo tamaño de archivo 10 mb</div>
+            </div>          
+
+            <div class="mb-3 row g-0">
+              <label for="name" class="col-md-5 col-form-label">Nombre</label>
+              <div class="col w-100"> 
+                <input class="form-control" type="text" name="name" id="name" [(ngModel)]="nombre">
+              </div>
+            </div>
+            <div class="mb-3 row g-0">
+              <label for="category" class="col-md-5 form-label">Categoría</label>
+              <div class="col w-100">    
+                <select class="form-select" name="category" id="category" [(ngModel)]="categoria">                  
+                  <option *ngFor="let c of dato_servicio?.categorias()" [ngValue]="c?.nombre">{{c?.nombre}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="mb-3 row g-0">
+              <label for="price" class="col-md-5 form-label">Precio (S/.)</label>
+              <div class="col w-100">
+                <input class="form-control" type="number" name="price" id="price" [(ngModel)]="precio">
+              </div>              
+            </div>
+            <div class="mb-3 row g-0">
+              <label for="measure" class="col-md-5 form-label">Unidad (Kg, ml, etc.)</label>
+              <div class="col w-100">
+                <input class="form-control" type="text" name="measure" id="measure" [(ngModel)]="unidad">
+              </div>
+            </div>
+            <div class="mb-3 row g-0">
+              <label for="discount" class="col-md-5 form-label">Descuento (%)</label>
+              <div class="col w-100">
+                <input class="form-control" type="number" name="discount" id="discount" [(ngModel)]="descuento">
+              </div>              
+            </div>           
+
+            <div class="d-grid mb-3 gap-3">                
+              <button class="btn btn-dark btn-lg" type="button" (click)="modificarProducto()">Guardar Cambios</button>
+              <button class="btn btn-secondary btn-lg" type="button" (click)="cancelar()">Cancelar</button>       
+            </div>
+          </form>  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<div class="col-md-4 d-flex align-items-center justify-content-start">          
+    <img [src]="imagen || 'https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg'" class="img-center img-border" alt="profilePicture">
+</div>
+<input class="form-control" type="file" (change) = cargarImagen($event)> 
+<div *ngIf="imagenPesada"> Maximo tamaño de archivo 5mb</div>
+<div>Nombre</div>
+<div><input type="text" [(ngModel)]="nombre"></div>
+<div>Categoria</div>
+<select class="form-select" name="type" id="type" [(ngModel)]="categoria">
+    <option value="Tipo" disabled selected>Elige un Tipo...</option>
+    <option value="Tecnología">Tecnología</option>
+    <option value="Higiene">Higiene</option>
+    <option value="Alimento">Alimento</option>
+    <option value="Ropa">Ropa</option>
+</select>
+<div>Precio</div>
+<div><input type="number" [(ngModel)]="precio"></div>
+<div>Unidad</div>
+<div><input type="text" [(ngModel)]="unidad"></div>
+<div>Descuento</div>
+<div><input type="number" [(ngModel)]="descuento">%</div>
+<button (click)="modificarProducto()">Modificar</button>
+<button (click)="cancelar()">Cancelar</button>-->
+

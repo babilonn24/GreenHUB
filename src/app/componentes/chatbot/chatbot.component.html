@@ -1,0 +1,41 @@
+<div class="chatbot-container">
+    <div class="row">
+        <div class="collapse" id="chatbot">
+            <!--<div class="chatbot-header chatbot-close" data-bs-toggle="collapse" data-bs-target="#chatbot" aria-expanded="false" aria-controls="chatbot">
+                Cerrar
+                <button type="button" class="btn-close" aria-label="Cerrar"></button>
+            </div>-->
+        
+            <div class="chatbot">
+                <header>
+                    <h2>Greenbot</h2>
+                </header>
+                <ul class="chatbox">
+                    <ng-container *ngFor="let m of mensajes,let i = index">
+                        <ng-container *ngIf="(i+1)%2 == 0">
+                            <li class="chat outgoing">
+                                <p>{{m}}</p>
+                            </li>
+                        </ng-container>
+                        <ng-container *ngIf="(i+1)%2 != 0">
+                            <li class="chat incoming">
+                                <span class="material-symbols-outlined"><img class="white-image" src="https://icons.veryicon.com/png/o/business/vscode-program-item-icon/robot-44.png"></span>
+                                <p>{{m}}</p>
+                            </li>
+                        </ng-container>
+                    </ng-container>
+                </ul>
+                <div class="chat-input">
+                    <textarea placeholder="Enter a message..." spellcheck="false" required [(ngModel)]="mensaje"></textarea>
+                    <span id="send-btn" class="material-symbols-rounded" (click)="enviar()">Enviar</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row pt-1">
+        <button type="button" class="chatbot-toggler" data-bs-toggle="collapse" data-bs-target="#chatbot" aria-expanded="false" aria-controls="chatbot">
+            <img class="white-image" src="https://cdn-icons-png.freepik.com/256/134/134718.png?semt=ais_hybrid">
+        </button>        
+    </div>
+</div>

@@ -1,0 +1,96 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-4 d-flex align-items-center justify-content-start">          
+      <img [src]="imagen || 'https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg'" class="img-center img-border" alt="profilePicture">
+    </div>
+  
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="mb-4">Crear cuenta</h1>
+
+          <form>            
+            <div class="mb-3">
+              <input class="form-control" type="file" (change) = cargarImagen($event)> 
+              <div *ngIf="imagenPesada"> Maximo tamaño de archivo 5mb</div>
+            </div>            
+
+            <div class="mb-3">                     
+                <input class="form-control" type="text" placeholder="Nombre completo" name="fullname" id="fullname" [(ngModel)]="nombre">
+            </div>
+            <div class="mb-3">
+              <input class="form-control" type="email" placeholder="Correo electrónico" name="email" id="email" [(ngModel)]="correo">
+            </div>
+            <div class="mb-3">
+                <input class="form-control" type="password" placeholder="Contraseña" name="password" id="password" [(ngModel)]="clave">
+            </div>                     
+            <div class="mb-3">
+              <input class="form-control" type="tel" placeholder="Celular" name="phone" id="phone" [(ngModel)]="celular">
+            </div>
+            <div class="mb-3">                        
+              <select class="form-select" name="type" id="type" [(ngModel)]="tipo">
+                <option value="Tipo" disabled selected>Elige un Tipo...</option>
+                <option value="Persona Natural">Persona Natural</option>
+                <option value="Empresa">Empresa</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <input class="form-control" type="text" placeholder="DNI/RUC" name="dni-ruc" id="dni-ruc" [(ngModel)]="dni_ruc">
+            </div>
+            <div class="mb-3">
+              <textarea class="form-control" placeholder="Cuéntanos sobre ti y qué productos buscas o vendes" rows="5" name="description" id="description" [(ngModel)]="descripcion"></textarea>
+            </div>
+            <div class="d-grid mb-3 gap-3">                
+              <button class="btn btn-dark btn-lg" type="button" (click)="registrarUsuario()">Crear</button>        
+            </div>
+          </form>  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!---<div class="formulario">
+    <h1 class="titulo">Registrar Usuario</h1>
+    <div class="contenidoFormulario">
+      <div class="ingreso">
+        <div class="campo">
+          <div class="nombre">Nombre</div>
+          <div class="casilla"><input type="text" [(ngModel)]="nombre"></div>
+        </div>
+        <div class="campo">
+          <div class="nombre">Clave</div>
+          <div class="casilla"><input type="password" [(ngModel)]="clave"></div>
+        </div>
+        <div class="campo">
+          <div class="nombre">Correo</div>
+          <div class="casilla"><input type="email" [(ngModel)]="correo"></div>
+        </div>
+        <div class="campo">
+          <div class="nombre">Celular</div>
+          <div class="casilla"><input type="tel" [(ngModel)]="celular"></div>
+        </div>
+        <div class="campo">
+          <div class="nombre">Tipo</div>
+          <div class="casilla">
+            <select [(ngModel)]="tipo">
+              <option value="Persona Natural">Persona Natural</option>
+              <option value="Empresa" selected>Empresa</option>
+            </select>
+          </div>
+        </div>
+        <div class="campo">
+          <div class="nombre">DNI/RUC</div>
+          <div class="casilla"><input type="text" [(ngModel)]="dni_ruc"></div>
+        </div>
+        <div class="boton">
+          <button (click)="registrarUsuario()" style="background-color:#88DC65;">Registrar</button>
+          <button (click)="cancelar()" style="background-color:#CC6666;">Cancelar</button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="mensajeErrorVisible" class="mensajeError">
+      {{mensajeError|json}}
+    </div>
+  </div>--->

@@ -1,0 +1,27 @@
+<nav class="navbar bg-light">
+    <div class="container-fluid  justify-content-start" >
+        <a (click)="inicio()" class="navbar-brand">
+            <img src="https://greenhubblog1.wordpress.com/wp-content/uploads/2024/05/logo_no_bg_940x348.png"
+                alt="Logo" width="220" height="80" class="d-inline-block align-text-top">
+        </a>
+        
+        <button class="btn btn-outline-success me-2" *ngIf="!ingreso()" (click)="ingresar()">Log in</button>
+        <button class="btn btn-outline-primary me-2" *ngIf="!ingreso()" (click)="registrarUsuario()">Crear Cuenta</button>        
+        <button class="btn btn-outline-secondary me-2" *ngIf="ingreso()" (click)="carrito()">Carrito</button>
+        <button class="btn btn-outline-info me-2" *ngIf="ingreso()" (click)="miUsuario()">Mi Perfil</button>
+        <button class="btn btn-outline-danger me-2" *ngIf="ingreso()" (click)="salir()">Cerrar Sesión</button>
+        <a class="btn btn-outline-primary me-2" href="https://greenhubblog1.wordpress.com/" target="_blank">Blog</a>
+    </div>
+</nav>
+
+<!---<div >
+    <div (click)="inicio()">Aplicacion</div>
+    <button class="btn btn-danger" *ngIf="!ingreso()" (click)="ingresar()">Log In</button>
+    <button class="btn btn-danger" *ngIf="!ingreso()" (click)="registrarUsuario()">Registrar Usuario</button>
+    <button *ngIf="ingreso()" (click)="carrito()">Mi carrito</button>
+    <button *ngIf="ingreso()" (click)="miUsuario()">Mi usuario</button>
+    <button *ngIf="ingreso()" (click)="salir()">Salir</button>
+</div>--->
+
+
+

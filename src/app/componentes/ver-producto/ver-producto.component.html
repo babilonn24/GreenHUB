@@ -1,0 +1,128 @@
+<div class="container mt-3">
+    <div class="card">
+        <div class="row no-gutters">
+            <div class="col-12 col-md-4 col-lg-4">
+                <div class="product-img-container">
+                    <img [src]="producto?.imagen || 'https://www.ludlowjute.com/wp-content/uploads/2023/12/Jute_Reusable.jpg'" class="img-product-view" data-bs-toggle="modal" data-bs-target="#fullImage" alt="productPicture">
+                    
+                    <div class="zoom-in-product">
+                        <button type="button" class="bg-light zoom-in-button" title="Ver imagen completa" data-bs-toggle="modal" data-bs-target="#fullImage">                       
+                            <img class="zoom-in-img" src="https://static-00.iconduck.com/assets.00/zoom-in-icon-512x512-rmtu584u.png">    
+                        </button>
+                    </div>
+                </div>           
+            </div>            
+
+            <div class="col">                
+                <div class="card-body">     
+                    <div class="row">
+                        <h5 class="display-6 mt-2">{{producto?.nombre}}</h5>                                   
+                    </div>                
+                    
+                    <hr class="mt-1 mb-3">                            
+
+                    <div class="row">
+                        <div class="row">                    
+                            <div class="col">                     
+                                <div class="row">
+                                    <div class="card bg-light card-product-view"> 
+                                        <p><b>Categoría: </b>{{producto?.categoria}}</p>
+                                        <p><b>Unidad: </b>{{producto?.unidad}}</p>
+                                        <p><b>Fecha: </b>{{producto?.fecha}}</p>
+                                    </div>  
+                                </div>                                                  
+                            </div>                    
+                            
+                            <div class="col">
+                                <div class="card-price-view">
+                                    <p><b>Precio</b></p>  
+
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <p class="card-price-number-view" *ngIf="producto?.descuento === '0'">S/. {{producto?.precio*(100-producto?.descuento)/100 | number : '1.0-2'}}</p>                                                             
+                                            <p class="card-price-number-view-blue" *ngIf="producto?.descuento !== '0'">S/. {{producto?.precio*(100-producto?.descuento)/100 | number : '1.0-2'}}</p>
+                                        </div>
+
+                                        <div class="col px-0 pt-2" *ngIf="producto?.descuento !== '0'">
+                                            <span class="badge product-discount-view">-{{producto?.descuento}}%</span>
+                                        </div>
+                                    </div>                               
+                                
+                                    <p class="card-price-number-original-view" *ngIf="producto?.descuento !== '0'">S/. {{producto?.precio}}</p>
+                                </div>                               
+                            </div>
+                        </div>
+                        <div class="row">                                                         
+                            <div class="mt-3 gap-3 d-md-flex">
+                                <!--<div class="card card-productor-view" (click)="verProductor()">
+                                    <p>
+                                        Ver productor
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22px" height="22px">
+                                            <path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z" fill="#4780a1"/>
+                                        </svg>
+                                    </p>                                  
+                                </div>-->
+
+                                <button class="btn btn-secondary" (click)="verProductor()">
+                                    Ver productor
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22px" height="22px">
+                                            <path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z" fill="#ffffff"/>
+                                        </svg>
+                                </button>
+
+                                <button class="btn btn-primary" *ngIf="usuarioIngreso()" (click)="agregarCarrito()">
+                                    Agregar al carrito
+                                    <img class="white-image" src="https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Sale-Stickers-PNG/Shopping_Cart_Icon_PNG_Clipart.png?m=1629833029">
+                                </button>                                    
+                            </div>                           
+                        </div>
+                    </div>                
+                </div>                
+            </div>
+        </div>        
+    </div>
+</div>
+
+<!--Full image-->
+<div class="modal fade" id="fullImage" tabindex="-1" aria-labelledby="fullImageLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-md">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="fullImageLabel">Imagen del producto</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img [src]="producto?.imagen || 'https://www.ludlowjute.com/wp-content/uploads/2023/12/Jute_Reusable.jpg'" class="img-fluid w-100" alt="profilePicture">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+<!--<div class="row row-cols-1 row-cols-md-2">
+    <div class="col d-flex align-items-center justify-content-center">
+        <img [src]="producto.imagen || 'https://www.ludlowjute.com/wp-content/uploads/2023/12/Jute_Reusable.jpg'" class="img-center img-border" alt="productPicture">                        
+    </div>
+
+    <div class="col">
+        <h5 class="card-title">{{producto.categoria}}</h5>
+    </div>
+</div>-->
+
+<!--<div *ngIf="producto"><div>Nombre:</div>
+<div>{{producto.nombre}}</div>
+<div>Codigo Productor:</div>
+<div>{{producto.codigo_productor}}</div>
+<div>Categoria:</div>
+<div>{{producto.categoria}}</div>
+<div>Precio:</div>
+<div>{{producto.precio}}</div>
+<div>Unidad:</div>
+<div>{{producto.unidad}}</div>
+<div>Descuento:</div>
+<div>{{producto.descuento}}</div>
+<div>Fecha:</div>
+<div>{{producto.fecha}}</div>
+</div> -->

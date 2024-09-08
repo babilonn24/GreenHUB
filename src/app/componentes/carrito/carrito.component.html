@@ -1,0 +1,119 @@
+<h1 class="display-4 mt-2" id="cart-top">Carrito</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-12 col-lg-8">
+            <div class="row mb-4" *ngFor="let producto of carrito.obtenerProductos()">
+                <div class="card">
+                    <div class="row no-gutters">
+                        <div class="col-4 zoom-in" style="padding: 0px; border-radius: 0px;">
+                            <img [src]="producto.imagen || 'https://www.ludlowjute.com/wp-content/uploads/2023/12/Jute_Reusable.jpg'" class="card-img-top img-center img-fluid">
+                            
+                            <div class="product-discount" *ngIf="producto.descuento !== '0'">
+                                <h6 class="m-0 product-discount-number">-{{producto.descuento}}%</h6>
+                            </div>  
+                        </div>
+                        <div class="col">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="row">                                                                             
+                                        <h5 class="card-title">{{producto.nombre}}</h5>
+                                        <hr class="mt-0 mb-1">                                      
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="row">
+                                            <div class="col">
+                                                <p><b>Código del Productor</b></p>
+                                                <p>{{producto.codigo_productor}}</p>                                                                                                                  
+                                                <p><b>Unidad</b></p>
+                                                <p>{{producto.unidad}}</p>  
+                                            </div>
+                                            <div class="col">
+                                                <p><b>Cantidad</b></p>                                                
+                                                <div class="mt-1">                                                    
+                                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                                        <button type="button" class="btn btn-info" (click)="operacion(producto.nombre,producto.codigo_productor,'disminuir')">&laquo;</button>
+                                                        <div class="btn btn-light">
+                                                            {{producto.cantidad}}
+                                                        </div>
+                                                        <button type="button" class="btn btn-info" (click)="operacion(producto.nombre,producto.codigo_productor,'aumentar')">&raquo;</button>
+                                                    </div>
+                                                </div>                                                                                    
+                                            </div>
+                                        </div>
+                                        
+                                        <hr class="mt-1 mb-1">  
+                                        
+                                        <div class="row">                                           
+                                            <p class="card-text product-price-number pb-0" *ngIf="producto.descuento === '0'">S/. {{producto.precio | number : '1.0-2'}}</p>
+                                            <p class="card-text product-price-number-blue pb-0" *ngIf="producto.descuento !== '0'">S/. {{producto.precio | number : '1.0-2'}}</p>
+                                            
+                                            <div class="pt-0" *ngIf="producto.descuento !== '0'">
+                                                <p class="card-text product-price-discounted">S/. {{producto.precio_sin_descuento * producto.cantidad | number : '1.0-2'}}</p>      
+                                            </div>
+                                        </div>                                                                             
+                                    </div>                                    
+                                </div>                                
+                            </div>                                   
+                        </div>
+                    </div>
+                    
+                    <!--Delete item-->
+                    <button class="btn btn-danger delete-item-button" title="Eliminar producto del Carrito" (click)="eliminar(producto)">                           
+                        <img class="white-image" src="https://static-00.iconduck.com/assets.00/trash-bin-icon-511x512-qdc3hjq7.png">                                                                                      
+                    </button>
+                </div>
+            </div>
+
+            <!--Go up (More than 5 items)-->
+            <div class="row d-grid" *ngIf="carrito.obtenerProductos().length > 5">
+                <button class="btn btn-primary rounded-0 go-up-button" (click)="irArriba()">                           
+                    <img class="white-image" src="https://cdn-icons-png.flaticon.com/512/5181/5181212.png">                                                                                      
+                </button>
+            </div>
+
+            <!--No items-->
+            <div class="row" *ngIf="carrito.obtenerProductos().length == 0">
+                <h1 class="display-6 mt-2" id="cart-top">El carrito está vacío.</h1>
+            </div>
+        </div>
+
+        <!--Total amount-->
+        <div class="col-12 col-md-12 col-lg-4"> 
+            <div class="card sticky-top">
+                <div class="card-body">
+                    <h5 class="card-title">Total a pagar</h5>
+                    <h2><span class="badge text-bg-secondary">S/. {{total| number : '1.0-2'}}</span></h2>
+                    
+                    <div class="mt-2 d-grid">  
+                        <button class="btn btn-primary" (click)="comprar()">Comprar</button>
+                    </div>                    
+                </div>                    
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<h1>Carrito</h1>
+    <div *ngFor="let producto of carrito.obtenerProductos()" >
+        <img [src]="producto.imagen || 'https://www.ludlowjute.com/wp-content/uploads/2023/12/Jute_Reusable.jpg'" class="card-img-top img-center img-fluid">
+        <div>Nombre:</div>
+        <div>{{producto.nombre}}</div>
+        <div>Codigo Productor:</div>
+        <div>{{producto.codigo_productor}}</div>
+        <div>Categoria:</div>
+        <div>{{producto.categoria}}</div>
+        <div>Cantidad:</div>
+        <div>{{producto.cantidad}}</div>
+        <div>Precio:</div>
+        <div>{{producto.precio}}</div>
+        <div>Unidad:</div>
+        <div>{{producto.unidad}}</div>
+        <div>Descuento:</div>
+        <div>{{producto.descuento}}</div>
+        <div>Fecha:</div>
+        <div>{{producto.fecha}}</div>
+        <button (click)="operacion(producto.nombre,producto.codigo_productor,'aumentar')">+</button>
+        <button (click)="operacion(producto.nombre,producto.codigo_productor,'disminuir')">-</button>
+        <button (click)="eliminar(producto)">Eliminar</button>
+    </div>-->

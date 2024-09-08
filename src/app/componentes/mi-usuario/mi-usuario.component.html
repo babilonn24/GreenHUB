@@ -1,0 +1,237 @@
+<!--New design-->
+<div class="container mt-5">
+  <div class="card">
+    <div class="row no-gutters">
+      <div class="col-12 col-md-6 col-lg-5">
+        <div class="d-none d-md-block d-lg-block">
+          <img [src]="usuario?.imagen || 'https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg'" class="profile-picture-large" data-bs-toggle="modal" data-bs-target="#fullImage" alt="profilePicture">
+        </div>
+
+        <div class="d-block d-md-none d-lg-none">
+          <img [src]="usuario?.imagen || 'https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg'" class="profile-picture-small" data-bs-toggle="modal" data-bs-target="#fullImage" alt="profilePicture">
+        </div>
+      </div>
+      
+      <div class="col-12 col-md-6 col-lg-7">
+        <div class="card-body">
+          <div class="row">
+            <div class="row">
+              <h5 class="display-6 card-title mb-0">{{usuario?.nombre}}</h5>
+              <p>{{usuario?.correo}}</p>
+            </div>
+
+            <div class="row mt-2" *ngIf="usuario?.descripcion">
+              <div class="card bg-light profile-container">
+                <p class="profile-description mb-1" id="profileDescription">{{usuario?.descripcion}}</p>
+                
+                <!--View full description-->
+                <div class="mb-2 fade-in" *ngIf="longText">
+                  <button type="button" class="btn btn-link p-0" data-bs-toggle="modal" data-bs-target="#fullDescription"><b>Ver más</b></button>
+                </div>
+              </div>
+              
+            </div>          
+          </div>
+
+          <hr class="my-3">
+
+          <div class="row">
+            <div class="row m-2 gap-1">
+              <div class="row">
+                <div class="col-auto col-md-auto col-lg-auto profile-label">
+                  <p>Celular</p>
+                </div>
+  
+                <div class="col bg-light">
+                  <p>{{usuario?.celular}}</p>
+                </div>
+              </div>
+  
+              <div class="row">
+                <div class="col-auto col-md-auto col-lg-auto profile-label">
+                  <p>DNI/RUC</p>
+                </div>
+  
+                <div class="col bg-light">
+                  <p>{{usuario?.dni_ruc}}</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-auto col-md-auto col-lg-auto profile-label">
+                  <p>Tipo de cuenta</p>
+                </div>
+  
+                <div class="col bg-light">
+                  <p>{{usuario?.tipo}}</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-auto col-md-auto col-lg-auto profile-label">
+                  <p>Fecha de creación</p>
+                </div>
+  
+                <div class="col bg-light">
+                  <p>{{usuario?.fecha}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-3">
+
+          <div class="row">
+            <div class="gap-3 d-flex">
+              <button class="btn btn-primary mr-2" (click)="modificarUsuario()">Editar Perfil</button>
+              <button class="btn btn-secondary mr-2" (click)="registrarProducto()">Registrar Producto</button>
+              <button class="btn btn-danger mr-2" (click)="eliminarUsuario()">Eliminar Cuenta</button>  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!---->
+
+<!--Full description-->
+<div class="modal fade" id="fullDescription" tabindex="-1" aria-labelledby="fullDescriptionLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title" id="fullDescriptionLabel">Descripción</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {{usuario?.descripcion}}
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+      </div>
+  </div>
+</div>
+
+<!--Full image-->
+<div class="modal fade" id="fullImage" tabindex="-1" aria-labelledby="fullImageLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-md">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="fullImageLabel">Foto de perfil</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img [src]="usuario?.imagen || 'https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg'" class="img-fluid w-100" alt="profilePicture">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--<div>Nombre:{{usuario.nombre}}</div>
+<div>Correo:{{usuario.correo}}</div>
+<div>Celular:{{usuario.celular}}</div>
+<div>DNI/RUC:{{usuario.dni_ruc}}</div>
+<div>Tipo:{{usuario.tipo}}</div>
+<div>Fecha:{{usuario.fecha}}</div>-->
+
+<hr class="my-4">
+
+<div class="container">   
+    <h1>Productos</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Categoria</th>
+          <th>Precio</th>
+          <th>Unidad</th>
+          <th>Descuento</th>
+          <th>Fecha</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>       
+        <tr *ngFor="let producto of productos">          
+            <td>{{producto?.nombre}}</td>                     
+            <td>{{producto?.categoria}}</td>            
+            <td>{{producto?.precio}}</td>            
+            <td>{{producto?.unidad}}</td>            
+            <td>{{producto?.descuento}}</td>            
+            <td>{{producto?.fecha}}</td>
+            <td><button class="btn btn-primary mr-2" (click)="verProducto(producto?.nombre, producto?.codigo_productor)">Ver Producto</button></td>            
+        </tr>    
+      </tbody>
+    </table>
+</div>
+
+<hr class="my-4">
+
+<div class="container">
+    <h1>Ventas</h1>
+    <table class="table">
+        <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Cantidad</th>
+              <th>Precio</th> 
+              <th>Fecha</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody>       
+            <tr *ngFor="let mv of misVentas">
+                <td>{{mv?.nombre_producto}}</td>
+                <td>{{mv?.cantidad}}</td>
+                <td>{{mv?.precio}}</td>
+                <td>{{mv?.fecha}}</td>         
+                <td>
+                  <button class="btn btn-primary mr-2" (click)="rutas_servicio?.irUsuario(mv?.codigo_comprador)">Ver Comprador</button>
+                </td>            
+            </tr>    
+          </tbody>
+    </table>
+</div>
+
+<!--<div *ngFor="let mv of misVentas" >
+    <div>Producto:{{mv.nombre_producto}}</div>
+    <div>Comprador:{{mv.codigo_comprador}}</div>
+    <div>Cantidad:{{mv.cantidad}}</div>
+    <div>Precio:{{mv.precio}}</div>
+    <div>Fecha:{{mv.fecha}}</div>
+</div>-->
+
+<hr class="my-4">
+
+<div class="container">
+    <h1>Compras</h1>
+    <table class="table">
+        <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Cantidad</th>
+              <th>Precio</th> 
+              <th>Fecha</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody>       
+            <tr *ngFor="let mv of misCompras">
+                <td>{{mv?.nombre_producto}}</td>
+                <td>{{mv?.cantidad}}</td>
+                <td>{{mv?.precio}}</td>
+                <td>{{mv?.fecha}}</td> 
+                <td class="gap-3 d-flex">                  
+                  <button class="btn btn-primary mr-2" (click)="verProducto(mv?.nombre_producto, mv?.codigo_productor)">Ver Producto</button>
+                  <button class="btn btn-primary mr-2" (click)="rutas_servicio?.irUsuario(mv?.codigo_productor)">Ver Vendedor</button>
+                </td>                    
+            </tr>    
+          </tbody>
+    </table>
+</div>
+

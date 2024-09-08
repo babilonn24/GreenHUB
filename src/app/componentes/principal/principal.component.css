@@ -1,0 +1,57 @@
+.principal{
+    display: flex;
+    align-items:center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    height: 85%;
+    width: 100%;
+}
+
+.usuario{
+    display: flex;
+    align-items:center;
+    background-color: grey;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    height: 20%;
+    width: 20%;
+}
+
+.nombre{
+    display: flex;
+    align-items:center;
+    flex-grow: 1;
+    box-sizing: border-box;
+    width: 30%;
+}
+
+.valor{
+    display: flex;
+    align-items:center;
+    flex-grow: 1;
+    box-sizing: border-box;
+    width: 70%;
+}
+
+.boton{
+    display: flex;
+    align-items:center;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    height: 20%;
+    width: 40%;
+}
+
+.rubik-mono-one-regular{
+  font-family: "Rubik Mono One", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.rubik-mono-one-small{
+  font-family: "Rubik Mono One", monospace;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 36px;
+}

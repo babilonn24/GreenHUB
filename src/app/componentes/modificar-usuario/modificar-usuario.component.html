@@ -1,0 +1,130 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-4 d-flex align-items-center justify-content-start">          
+      <img [src]="imagen || usuario?.imagen || 'https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg'" class="img-center img-border" alt="profilePicture">
+    </div>
+
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="mb-4">Editar Perfil</h1>
+
+          <form>
+            <div class="mb-3">
+              <input class="form-control" type="file" (change)=cargarImagen($event)>              
+              <div *ngIf="imagenPesada"> Maximo tamaño de archivo 10 mb</div>
+            </div>          
+
+            <div class="mb-3 row g-0">
+              <label for="fullname" class="col-md-5 col-form-label">Nombre completo</label>
+              <div class="col w-100"> 
+                <input class="form-control" type="text" name="fullname" id="fullname" [(ngModel)]="nombre">
+              </div>
+            </div>
+            
+            <div class="mb-3 row g-0">
+              <label for="email" class="col-md-5 form-label">Correo electrónico</label>
+              <div class="col w-100">
+                <input class="form-control" type="email" name="email" id="email" [(ngModel)]="correo">
+              </div>              
+            </div>
+            <div class="mb-3 row g-0">
+              <label for="password" class="col-md-5 form-label">Contraseña</label>
+              <div class="col w-100">
+                <input class="form-control" type="password" name="password" id="password" [(ngModel)]="clave">
+              </div>
+            </div>
+            <div class="mb-3 row g-0">
+              <label for="phone" class="col-md-5 form-label">Celular</label>
+              <div class="col w-100">
+                <input class="form-control" type="tel" name="phone" id="phone" [(ngModel)]="celular">
+              </div>              
+            </div>
+            <div class="mb-3 row g-0">
+              <label for="type" class="col-md-5 form-label">Tipo</label>
+              <div class="col w-100">
+                <select class="form-select" name="type" id="type" [(ngModel)]="tipo">
+                  <option value="Persona Natural">Persona Natural</option>
+                  <option value="Empresa" selected>Empresa</option>
+                </select>
+              </div>
+            </div>
+            <div class="mb-3 row g-0">
+              <label for="dni-ruc" class="col-md-5 form-label">DNI/RUC</label>
+              <div class="col w-100">
+                <input class="form-control" type="text" name="dni-ruc" id="dni-ruc" [(ngModel)]="dni_ruc">
+              </div>              
+            </div>
+
+            <div class="mb-3 row g-0">
+              <label for="description" class="col-form-label">Descripción</label>
+              <div class="w-100">
+                <textarea class="form-control" rows="5" name="description" id="description" [(ngModel)]="descripcion"></textarea>
+              </div>
+            </div>
+
+            <div class="d-grid mb-3 gap-3">                
+              <button class="btn btn-dark btn-lg" type="button" (click)="modificarUsuario()">Guardar Cambios</button>
+              <button class="btn btn-secondary btn-lg" type="button" (click)="cancelar()">Cancelar</button>       
+            </div>
+          </form>  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  document.getElementById("description").wrap = "soft";
+</script>
+
+
+
+<!--<div class="formulario">
+    <h1 class="titulo">Actualizar Usuario</h1>
+    <div class="contenidoFormulario">
+      <div class="ingreso">
+        
+        <input class="form-control" type="file" (change) = cargarImagen($event)>
+        <img *ngIf="imagen" src="{{imagen}}" class="card-img"/>
+        <div *ngIf="imagenPesada"> Maximo tamaño de archivo 10 mb</div>
+        
+        <div class="campo">
+          <div class="nombre">Nombre</div>
+          <div class="casilla"><input type="text" [(ngModel)]="nombre"></div>
+        </div>
+        <div class="campo">
+          <div class="nombre">Clave</div>
+          <div class="casilla"><input type="password" [(ngModel)]="clave"></div>
+        </div>
+        <div class="campo">
+          <div class="nombre">Correo</div>
+          <div class="casilla"><input type="email" [(ngModel)]="correo"></div>
+        </div>
+        <div class="campo">
+          <div class="nombre">Celular</div>
+          <div class="casilla"><input type="tel" [(ngModel)]="celular"></div>
+        </div>
+        <div class="campo">
+          <div class="nombre">Tipo</div>
+          <div class="casilla">
+            <select [(ngModel)]="tipo">
+              <option value="Persona Natural">Persona Natural</option>
+              <option value="Empresa" selected>Empresa</option>
+            </select>
+          </div>
+        </div>
+        <div class="campo">
+          <div class="nombre">DNI/RUC</div>
+          <div class="casilla"><input type="text" [(ngModel)]="dni_ruc"></div>
+        </div>
+        <div class="boton">
+          <button (click)="modificarUsuario()" style="background-color:#88DC65;">Actualizar</button>
+          <button (click)="cancelar()" style="background-color:#CC6666;">Cancelar</button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="mensajeErrorVisible" class="mensajeError">
+      {{mensajeError|json}}
+    </div>
+  </div>-->
+
