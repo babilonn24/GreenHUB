@@ -18,8 +18,8 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
   templateUrl: './principal.component.html',
   styleUrls: ['./principal.component.css']
 })
-export class PrincipalComponent {
 
+export class PrincipalComponent {
   categoriaFiltro:string = 'Todos';
   orden:string = 'Ninguna';
   precioFiltro:any;
@@ -34,7 +34,7 @@ export class PrincipalComponent {
   smallScreenList:any;
 
   constructor(private servicioUsuario: UsuarioService, private router:Router, private servicioProducto: ProductoService) { 
-    this.servicioUsuario.obtenerUsuarios().subscribe(
+    /*this.servicioUsuario.obtenerUsuarios().subscribe(
       (data)=> {
         for(let usuario of data){
           this.servicioUsuario.obtenerUsuario(usuario.dni_ruc).subscribe(
@@ -52,10 +52,11 @@ export class PrincipalComponent {
         this.mensajeErrorVisible=true;
         this.mensajeError=err.error.mensaje;
       }   
-    );
+    );*/
     this.servicioProducto.obtenerProductos().subscribe(
       (data)=> {
         for(let producto of data){
+          console.log(producto)
           this.servicioProducto.obtenerProducto(producto.nombre,producto.codigo_productor).subscribe(
             (data)=> {
               this.productos.push(data);

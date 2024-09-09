@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class UsuarioService {
 
-  private direccion="https://tad-backend-production.up.railway.app/usuarios"
-  //private direccion="http://localhost:3000/usuarios"
+  //private direccion="https://tad-backend-production.up.railway.app/usuarios"
+  private direccion="http://localhost:3000/usuarios"
 
   constructor(private http: HttpClient) { }
 

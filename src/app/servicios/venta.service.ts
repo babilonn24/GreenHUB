@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class VentaService {
 
-  private direccion="https://tad-backend-production.up.railway.app/ventas"
-  //private direccion="http://localhost:3000/ventas"
+  //private direccion="https://tad-backend-production.up.railway.app/ventas"
+  private direccion="http://localhost:3000/ventas"
 
   constructor(private http: HttpClient) { 
   }
