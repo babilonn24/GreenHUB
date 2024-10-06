@@ -12,6 +12,7 @@ import { DatosService } from 'src/app/servicios/datos.service';
 import { LoginService } from 'src/app/servicios/login.service';
 import { ProductoService } from 'src/app/servicios/producto.service';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
+import { WishlistService } from 'src/app/servicios/wishlist.service';
 
 @Component({
   selector: 'app-principal',
@@ -33,7 +34,7 @@ export class PrincipalComponent {
   largeScreenList:any;
   smallScreenList:any;
 
-  constructor(private servicioUsuario: UsuarioService, private router:Router, private servicioProducto: ProductoService) { 
+  constructor(private servicioUsuario: UsuarioService, private router:Router, private servicioProducto: ProductoService, private servicioWishlist: WishlistService) { 
     /*this.servicioUsuario.obtenerUsuarios().subscribe(
       (data)=> {
         for(let usuario of data){
@@ -101,6 +102,28 @@ export class PrincipalComponent {
       return true
     else
       return false
+  }
+
+  //Wishlist
+  agregar_item(nombre:any, codigo_productor:any): void{
+    this.servicioWishlist.agregarItem(
+      {
+        "codigo_usuario": LoginService.usuarioObtener().dni_ruc,
+        "items":[
+          {
+            "nombre_producto": nombre,
+            "codigo_productor": codigo_productor,
+          }
+        ]
+      }
+    ).subscribe(
+      (data)=> {
+        //this.router.navigate(['']);
+        console.log('success')
+      },(err)=> {
+        console.log(err)
+      }   
+    );
   }
 
   //Chunk items depending the screen size

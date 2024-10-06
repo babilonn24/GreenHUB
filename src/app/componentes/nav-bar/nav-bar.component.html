@@ -8,6 +8,7 @@
         <button class="btn btn-outline-success me-2" *ngIf="!ingreso()" (click)="ingresar()">Log in</button>
         <button class="btn btn-outline-primary me-2" *ngIf="!ingreso()" (click)="registrarUsuario()">Crear Cuenta</button>        
         <button class="btn btn-outline-secondary me-2" *ngIf="ingreso()" (click)="carrito()">Carrito</button>
+        <button class="btn btn-outline-secondary me-2" *ngIf="ingreso()" (click)="wishlist()">Lista de Deseos</button>
         <button class="btn btn-outline-info me-2" *ngIf="ingreso()" (click)="miUsuario()">Mi Perfil</button>
         <button class="btn btn-outline-danger me-2" *ngIf="ingreso()" (click)="salir()">Cerrar Sesión</button>
         <a class="btn btn-outline-primary me-2" href="https://greenhubblog1.wordpress.com/" target="_blank">Blog</a>

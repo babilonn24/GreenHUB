@@ -1,0 +1,57 @@
+<h1 class="display-4 mt-2" id="cart-top">Lista de Deseos</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-12 col-lg-8">
+            <div class="row mb-4" *ngFor="let item of productos">
+                <div class="card">
+                    <div class="row no-gutters">
+                        <div class="col-4 zoom-in" style="padding: 0px; border-radius: 0px;" (click)="verProducto(item.nombre, item.codigo_productor)">
+                            <img [src]="item.imagen || 'https://www.ludlowjute.com/wp-content/uploads/2023/12/Jute_Reusable.jpg'" class="card-img-top img-center img-fluid">
+                            
+                            <div class="product-discount" *ngIf="item.descuento !== '0'">
+                                <h6 class="m-0 product-discount-number">-{{item.descuento}}%</h6>
+                            </div>  
+                        </div>
+                        <div class="col">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="row">                                                                             
+                                        <h5 class="card-title">{{item.nombre}}</h5>
+                                        <hr class="mt-0 mb-1">                                      
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="row">
+                                            <div class="col">
+                                                <p><b>Código del Productor</b></p>
+                                                <p>{{item.codigo_productor}}</p>                                                                                                                  
+                                                <p><b>Unidad</b></p>
+                                                <p>{{item.unidad}}</p>  
+                                            </div>
+                                        </div>
+                                        
+                                        <hr class="mt-1 mb-1">  
+                                        
+                                        <div class="row">                                           
+                                            <p class="card-text text-end product-price-number" *ngIf="item.descuento === '0'">S/. {{item.precio*(100-item.descuento)/100 | number : '1.0-2'}}</p>
+                                            <p class="card-text text-end product-price-number-blue" *ngIf="item.descuento !== '0'">S/. {{item.precio*(100-item.descuento)/100 | number : '1.0-2'}}</p> 
+                                            
+                                            <div class="pt-0" *ngIf="item.descuento !== '0'">
+                                                <p class="card-text text-end product-price-discounted">S/. {{item.precio | number : '1.0-2'}}</p>   
+                                            </div>
+                                        </div>                                                                             
+                                    </div>                                    
+                                </div>                                
+                            </div>                                   
+                        </div>
+                    </div>
+                    
+                    <!--Delete item-->
+                    <button class="btn btn-danger delete-item-button" title="Eliminar item de la Lista">                           
+                        <img class="white-image" src="https://static-00.iconduck.com/assets.00/trash-bin-icon-511x512-qdc3hjq7.png">                                                                                      
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

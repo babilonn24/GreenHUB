@@ -8,6 +8,7 @@ import { LoginComponent } from './componentes/login/login.component';
 import { MiUsuarioComponent } from './componentes/mi-usuario/mi-usuario.component';
 import { AgregarProductoComponent } from './componentes/agregar-producto/agregar-producto.component';
 import { CarritoComponent } from './componentes/carrito/carrito.component';
+import { WishlistComponent } from './componentes/wishlist/wishlist.component';
 import { VerUsuarioComponent } from './componentes/ver-usuario/ver-usuario.component';
 import { MiProductoComponent } from './componentes/mi-producto/mi-producto.component';
 import { VerProductoComponent } from './componentes/ver-producto/ver-producto.component';
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'mi-producto/:codigo_productor/:nombre', component: MiProductoComponent, canActivate:[authGuard]},
   { path: 'ver-producto/:codigo_productor/:nombre', component: VerProductoComponent },
   { path: 'carrito', component: CarritoComponent, canActivate:[authGuard] },
+  { path: 'wishlist', component: WishlistComponent, canActivate:[authGuard] },
   { path: 'modificar-usuario', component: ModificarUsuarioComponent, canActivate:[authGuard]},
   { path: 'modificar-producto/:codigo_productor/:nombre', component: ModificarProductoComponent, canActivate:[authGuard] },
   { path: 'categoria-producto/:categoria', component: CategoriaProductoComponent },

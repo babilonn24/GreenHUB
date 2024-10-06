@@ -33,6 +33,10 @@ export class NavBarComponent {
     this.router.navigate(['carrito']);
   }
 
+  wishlist():void {
+    this.router.navigate(['wishlist']);
+  }
+
   miUsuario():void {
     this.router.navigate(['mi-usuario']);
   }

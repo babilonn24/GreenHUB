@@ -128,7 +128,14 @@
                                 <div class="product-discounted" *ngIf="producto.descuento !== '0'">
                                     <p class="card-text text-end product-price-discounted">S/. {{producto.precio}}</p>      
                                 </div>
-                            </div>                            
+                            </div>
+
+                            <!--Add item to Wishlist-->
+                            <div>
+                                <button class="btn btn-danger cart-button" title="Agregar a la Wishlist" *ngIf="usuarioIngreso()" (click)="agregar_item(producto.nombre, producto.codigo_productor)">                           
+                                    <img class="white-image" src="https://www.iconpacks.net/icons/1/free-heart-icon-992-thumb.png">                                                                                      
+                                </button>
+                            </div>                          
                         </div> 
                     </div>
                 </div>

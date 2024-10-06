@@ -281,6 +281,7 @@ body,html * {
 
 .profile-description {
     display: -webkit-box;
+    white-space: pre-wrap;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
