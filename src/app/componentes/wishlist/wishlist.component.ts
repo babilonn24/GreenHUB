@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LoginService } from 'src/app/servicios/login.service';
 import { WishlistService } from 'src/app/servicios/wishlist.service';
 import { ProductoService } from 'src/app/servicios/producto.service';
+import { CarritoService } from 'src/app/servicios/carrito.service';
 
 @Component({
   selector: 'app-wishlist',
@@ -41,5 +42,35 @@ export class WishlistComponent {
       this.router.navigate(['mi-producto/'+codigo_productor+'/'+nombre]);
     else
       this.router.navigate(['ver-producto/'+codigo_productor+'/'+nombre]);
+  }
+
+  agregarCarrito(item:any): void{
+    CarritoService.agregar(item);
+  }
+
+  eliminarItem(item:any): void{
+    let index = this.productos.indexOf(item)
+    if(index != -1){
+      this.productos.splice(index, 1);
+    }
+
+    this.servicioWishlist.eliminarItem(
+      {
+        "codigo_usuario": LoginService.usuarioObtener().dni_ruc,
+        "items":[
+          {
+            "nombre_producto": item.nombre,
+            "codigo_productor": item.codigo_productor,
+          }
+        ]
+      }
+    ).subscribe(
+      (data)=> {
+        //this.router.navigate(['']);
+        console.log('success');
+      },(err)=> {
+        console.log(err)
+      }   
+    );
   }
 }

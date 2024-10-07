@@ -73,7 +73,12 @@
                                 <button class="btn btn-primary" *ngIf="usuarioIngreso()" (click)="agregarCarrito()">
                                     Agregar al carrito
                                     <img class="white-image" src="https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Sale-Stickers-PNG/Shopping_Cart_Icon_PNG_Clipart.png?m=1629833029">
-                                </button>                                    
+                                </button>
+                                
+                                <button class="btn btn-danger" *ngIf="usuarioIngreso()" (click)="agregarItem(producto.nombre, producto.codigo_productor)">
+                                    Guardar en la Lista de Deseos
+                                    <img class="white-image" src="https://www.iconpacks.net/icons/1/free-heart-icon-992-thumb.png">
+                                </button>   
                             </div>                           
                         </div>
                     </div>                

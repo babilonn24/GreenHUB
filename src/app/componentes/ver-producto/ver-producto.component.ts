@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CarritoService } from 'src/app/servicios/carrito.service';
 import { LoginService } from 'src/app/servicios/login.service';
 import { ProductoService } from 'src/app/servicios/producto.service';
+import { WishlistService } from 'src/app/servicios/wishlist.service';
 
 @Component({
   selector: 'app-ver-producto',
@@ -15,7 +16,7 @@ export class VerProductoComponent {
   nombre:any;
   codigo_productor:any;
 
-  constructor(private servicioProducto: ProductoService, private route: ActivatedRoute, private router:Router) { 
+  constructor(private servicioProducto: ProductoService, private route: ActivatedRoute, private router:Router, private servicioWishlist: WishlistService) { 
     
     this.nombre  = this.route.snapshot.paramMap.get('nombre');
     this.codigo_productor = this.route.snapshot.paramMap.get('codigo_productor');
@@ -44,6 +45,27 @@ export class VerProductoComponent {
       return true
     else
       return false
+  }
+
+  agregarItem(nombre:any, codigo_productor:any): void{
+    this.servicioWishlist.agregarItem(
+      {
+        "codigo_usuario": LoginService.usuarioObtener().dni_ruc,
+        "items":[
+          {
+            "nombre_producto": nombre,
+            "codigo_productor": codigo_productor,
+          }
+        ]
+      }
+    ).subscribe(
+      (data)=> {
+        //this.router.navigate(['']);
+        console.log('success')
+      },(err)=> {
+        console.log(err)
+      }   
+    );
   }
   
 }

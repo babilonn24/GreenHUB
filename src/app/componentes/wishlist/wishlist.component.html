@@ -1,11 +1,11 @@
 <h1 class="display-4 mt-2" id="cart-top">Lista de Deseos</h1>
 <div class="container">
     <div class="row">
-        <div class="col-12 col-md-12 col-lg-8">
+        <div class="col-12 col-md-12 col-lg-12">
             <div class="row mb-4" *ngFor="let item of productos">
                 <div class="card">
                     <div class="row no-gutters">
-                        <div class="col-4 zoom-in" style="padding: 0px; border-radius: 0px;" (click)="verProducto(item.nombre, item.codigo_productor)">
+                        <div class="col-3 zoom-in" style="padding: 0px; border-radius: 0px;" (click)="verProducto(item.nombre, item.codigo_productor)">
                             <img [src]="item.imagen || 'https://www.ludlowjute.com/wp-content/uploads/2023/12/Jute_Reusable.jpg'" class="card-img-top img-center img-fluid">
                             
                             <div class="product-discount" *ngIf="item.descuento !== '0'">
@@ -15,39 +15,54 @@
                         <div class="col">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="row">                                                                             
-                                        <h5 class="card-title">{{item.nombre}}</h5>
-                                        <hr class="mt-0 mb-1">                                      
+                                    <div class="col">
+                                        <div class="row">                                                                          
+                                            <h5 class="card-title">{{item.nombre}}</h5>
+                                            <hr class="mt-0 mb-1">                                      
+                                        </div>
+    
+                                        <div class="row">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <p><b>Código del Productor</b></p>
+                                                    <p>{{item.codigo_productor}}</p>                                                                                                                  
+                                                    <p><b>Unidad</b></p>
+                                                    <p>{{item.unidad}}</p>  
+                                                </div>
+                                            </div>
+                                            
+                                            <hr class="mt-1 mb-1">  
+                                            
+                                            
+                                        </div> 
                                     </div>
 
-                                    <div class="row">
+                                    <div class="col">
                                         <div class="row">
+                                            <div class="col">                                           
+                                                <p class="card-text text-end product-price-number" *ngIf="item.descuento === '0'">S/. {{item.precio*(100-item.descuento)/100 | number : '1.0-2'}}</p>
+                                                <p class="card-text text-end product-price-number-blue" *ngIf="item.descuento !== '0'">S/. {{item.precio*(100-item.descuento)/100 | number : '1.0-2'}}</p> 
+                                                
+                                                <div class="pt-0" *ngIf="item.descuento !== '0'">
+                                                    <p class="card-text text-end product-price-discounted">S/. {{item.precio | number : '1.0-2'}}</p>   
+                                                </div>
+                                            </div>
+
                                             <div class="col">
-                                                <p><b>Código del Productor</b></p>
-                                                <p>{{item.codigo_productor}}</p>                                                                                                                  
-                                                <p><b>Unidad</b></p>
-                                                <p>{{item.unidad}}</p>  
+                                                <button class="btn btn-primary cart-button" title="Agregar al carrito" (click)="agregarCarrito(item)">                           
+                                                    <img class="white-image" src="https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Sale-Stickers-PNG/Shopping_Cart_Icon_PNG_Clipart.png?m=1629833029">                                                                                      
+                                                </button>
                                             </div>
                                         </div>
-                                        
-                                        <hr class="mt-1 mb-1">  
-                                        
-                                        <div class="row">                                           
-                                            <p class="card-text text-end product-price-number" *ngIf="item.descuento === '0'">S/. {{item.precio*(100-item.descuento)/100 | number : '1.0-2'}}</p>
-                                            <p class="card-text text-end product-price-number-blue" *ngIf="item.descuento !== '0'">S/. {{item.precio*(100-item.descuento)/100 | number : '1.0-2'}}</p> 
-                                            
-                                            <div class="pt-0" *ngIf="item.descuento !== '0'">
-                                                <p class="card-text text-end product-price-discounted">S/. {{item.precio | number : '1.0-2'}}</p>   
-                                            </div>
-                                        </div>                                                                             
-                                    </div>                                    
+                                    </div>
+                                                                       
                                 </div>                                
                             </div>                                   
                         </div>
                     </div>
                     
                     <!--Delete item-->
-                    <button class="btn btn-danger delete-item-button" title="Eliminar item de la Lista">                           
+                    <button class="btn btn-danger delete-item-button" title="Eliminar item de la Lista" (click)="eliminarItem(item)">                           
                         <img class="white-image" src="https://static-00.iconduck.com/assets.00/trash-bin-icon-511x512-qdc3hjq7.png">                                                                                      
                     </button>
                 </div>

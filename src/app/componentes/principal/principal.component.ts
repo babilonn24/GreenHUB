@@ -105,7 +105,7 @@ export class PrincipalComponent {
   }
 
   //Wishlist
-  agregar_item(nombre:any, codigo_productor:any): void{
+  agregarItem(nombre:any, codigo_productor:any): void{
     this.servicioWishlist.agregarItem(
       {
         "codigo_usuario": LoginService.usuarioObtener().dni_ruc,

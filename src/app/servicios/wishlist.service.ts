@@ -17,4 +17,9 @@ export class WishlistService {
   agregarItem(nuevo_item:any):Observable<any>{
     return this.http.put<any>(this.direccion+"/agregar_item_wishlist", nuevo_item);
   }
+
+  eliminarItem(item_seleccionado:any):Observable<any>{
+    console.log(item_seleccionado)
+    return this.http.delete<any>(this.direccion+"/eliminar_item_wishlist", { body: item_seleccionado });
+  }
 }
