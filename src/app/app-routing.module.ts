@@ -14,6 +14,7 @@ import { MiProductoComponent } from './componentes/mi-producto/mi-producto.compo
 import { VerProductoComponent } from './componentes/ver-producto/ver-producto.component';
 import { ModificarProductoComponent } from './componentes/modificar-producto/modificar-producto.component';
 import { CategoriaProductoComponent } from './componentes/categoria-producto/categoria-producto.component';
+import { PagoComponent } from './componentes/pago/pago.component';
 import { authGuard } from './guardia/guardia';
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'modificar-usuario', component: ModificarUsuarioComponent, canActivate:[authGuard]},
   { path: 'modificar-producto/:codigo_productor/:nombre', component: ModificarProductoComponent, canActivate:[authGuard] },
   { path: 'categoria-producto/:categoria', component: CategoriaProductoComponent },
+  { path: 'pago', component: PagoComponent, canActivate:[authGuard] },
   { path: '**', component: PrincipalComponent }
 ];
 

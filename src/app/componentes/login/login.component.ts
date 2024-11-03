@@ -22,7 +22,8 @@ export class LoginComponent {
     this.servicioUsuario.loggearUsuario(this.correo,Md5.hashStr(this.clave+"")).subscribe(
       (data)=>{
         LoginService.registrar(data);
-        this.router.navigate(['mi-usuario']);
+        //this.router.navigate(['mi-usuario']);
+        this.router.navigate(['']);
       },
       (err)=>{
       }

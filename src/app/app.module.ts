@@ -20,6 +20,8 @@ import { ModificarProductoComponent } from './componentes/modificar-producto/mod
 import { CategoriaProductoComponent } from './componentes/categoria-producto/categoria-producto.component';
 import { ChatbotComponent } from './componentes/chatbot/chatbot.component';
 import { WishlistComponent } from './componentes/wishlist/wishlist.component';
+import { PagoComponent } from './componentes/pago/pago.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 @NgModule({
   declarations: [
@@ -39,12 +41,14 @@ import { WishlistComponent } from './componentes/wishlist/wishlist.component';
     ModificarProductoComponent,
     CategoriaProductoComponent,
     ChatbotComponent,
-    WishlistComponent
+    WishlistComponent,
+    PagoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    NgxPayPalModule,
     FormsModule
   ],
   providers: [

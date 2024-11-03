@@ -1,0 +1,49 @@
+<h1 class="display-4 mt-2" id="cart-top">Realizar pago</h1>
+<div class="container h-100 py-5">
+    <div class="row">
+        <div class="col-8">
+            <div class="row d-flex justify-content-center h-100">
+                <div class="col">
+                    <div class="card rounded-3 mb-4">
+                        <div class="card-body p-2" *ngFor="let producto of carrito.obtenerProductos()">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <div class="col-md-2 col-lg-2 col-xl-2">
+                                    <img
+                                    [src]="producto.imagen || 'https://www.ludlowjute.com/wp-content/uploads/2023/12/Jute_Reusable.jpg'"
+                                    class="img-center img-fluid h-100 rounded-3" [alt]="producto.nombre" style="width:300px;">
+                                </div>
+                                <div class="col-md-3 col-lg-3 col-xl-3">
+                                    <p class="lead fw-normal mb-2">{{producto.nombre}}</p>
+                                </div>
+                                <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                    <h5 class="mb-0">X{{producto.cantidad}}</h5>
+                                </div>
+                                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                    <h5 class="mb-0 product-price-number" *ngIf="producto.descuento === 0">{{producto.precio | number : '1.0-2'}} $</h5>
+                                    <h5 class="mb-0 product-price-number-blue" *ngIf="producto.descuento !== 0">{{producto.precio | number : '1.0-2'}} $</h5>
+                                </div>
+                                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                    <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-12 col-md-12 col-lg-4"> 
+            <div class="card sticky-top">
+                <div class="card-body">
+                    <h5 class="card-title">Total a pagar</h5>
+                    <h2><span class="badge text-bg-secondary">{{total| number : '1.0-2'}} $</span></h2>
+                 
+                    <div class="mt-2 d-grid">  
+                        <ngx-paypal [config]="payPalConfig"></ngx-paypal>  
+                    </div>                    
+                </div>
+                               
+            </div>
+        </div>
+    </div>
+</div>

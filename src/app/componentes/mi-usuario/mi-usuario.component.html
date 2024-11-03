@@ -196,22 +196,25 @@
     <table class="table">
         <thead>
             <tr>
-              <th>Producto</th>
-              <th>Cantidad</th>
-              <th>Precio</th> 
+              <th>Productos</th>
               <th>Fecha</th>
+              <th>Total</th>
+              <th>Puntos</th>
               <th>Acción</th>
             </tr>
           </thead>
           <tbody>       
-            <tr *ngFor="let mv of misCompras">
-                <td>{{mv?.nombre_producto}}</td>
-                <td>{{mv?.cantidad}}</td>
-                <td>{{mv?.precio}}</td>
-                <td>{{mv?.fecha}}</td> 
+            <tr *ngFor="let mc of misCompras">
+                <td>
+                  <ul class="list-unstyled">
+                    <li *ngFor="let p of mc?.productos">{{p?.nombre_producto}} X{{p?.cantidad}}</li>
+                  </ul>
+                </td>
+                <td>{{mc?.fecha}}</td> 
+                <td>{{mc?.total}} $</td>
+                <td></td>
                 <td class="gap-3 d-flex">                  
-                  <button class="btn btn-primary mr-2" (click)="verProducto(mv?.nombre_producto, mv?.codigo_productor)">Ver Producto</button>
-                  <button class="btn btn-primary mr-2" (click)="rutas_servicio?.irUsuario(mv?.codigo_productor)">Ver Vendedor</button>
+                  <button class="btn btn-primary mr-2">Ver Detalles</button>
                 </td>                    
             </tr>    
           </tbody>

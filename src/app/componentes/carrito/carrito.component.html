@@ -8,7 +8,7 @@
                         <div class="col-4 zoom-in" style="padding: 0px; border-radius: 0px;">
                             <img [src]="producto.imagen || 'https://www.ludlowjute.com/wp-content/uploads/2023/12/Jute_Reusable.jpg'" class="card-img-top img-center img-fluid">
                             
-                            <div class="product-discount" *ngIf="producto.descuento !== '0'">
+                            <div class="product-discount" *ngIf="producto.descuento !== 0">
                                 <h6 class="m-0 product-discount-number">-{{producto.descuento}}%</h6>
                             </div>  
                         </div>
@@ -37,19 +37,19 @@
                                                             {{producto.cantidad}}
                                                         </div>
                                                         <button type="button" class="btn btn-info" (click)="operacion(producto.nombre,producto.codigo_productor,'aumentar')">&raquo;</button>
-                                                    </div>
-                                                </div>                                                                                    
+                                                    </div>                                                   
+                                                </div>                                                                                                                             
                                             </div>
                                         </div>
                                         
                                         <hr class="mt-1 mb-1">  
                                         
                                         <div class="row">                                           
-                                            <p class="card-text product-price-number pb-0" *ngIf="producto.descuento === '0'">S/. {{producto.precio | number : '1.0-2'}}</p>
-                                            <p class="card-text product-price-number-blue pb-0" *ngIf="producto.descuento !== '0'">S/. {{producto.precio | number : '1.0-2'}}</p>
+                                            <p class="card-text product-price-number pb-0" *ngIf="producto.descuento === 0">{{producto.precio | number : '1.0-2'}} $</p>
+                                            <p class="card-text product-price-number-blue pb-0" *ngIf="producto.descuento !== 0">{{producto.precio | number : '1.0-2'}} $</p>
                                             
-                                            <div class="pt-0" *ngIf="producto.descuento !== '0'">
-                                                <p class="card-text product-price-discounted">S/. {{producto.precio_sin_descuento * producto.cantidad | number : '1.0-2'}}</p>      
+                                            <div class="pt-0" *ngIf="producto.descuento !== 0">
+                                                <p class="card-text product-price-discounted">{{producto.precio_sin_descuento * producto.cantidad | number : '1.0-2'}} $</p>      
                                             </div>
                                         </div>                                                                             
                                     </div>                                    
@@ -83,10 +83,10 @@
             <div class="card sticky-top">
                 <div class="card-body">
                     <h5 class="card-title">Total a pagar</h5>
-                    <h2><span class="badge text-bg-secondary">S/. {{total| number : '1.0-2'}}</span></h2>
+                    <h2><span class="badge text-bg-secondary">{{total| number : '1.0-2'}} $</span></h2>
                     
                     <div class="mt-2 d-grid">  
-                        <button class="btn btn-primary" (click)="comprar()">Comprar</button>
+                        <button class="btn btn-primary" (click)="pagar()">Comprar</button>
                     </div>                    
                 </div>                    
             </div>

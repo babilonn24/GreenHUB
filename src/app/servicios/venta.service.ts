@@ -8,12 +8,12 @@ import { Observable } from 'rxjs';
 export class VentaService {
 
   //private direccion="https://tad-backend-production.up.railway.app/ventas"
-  private direccion="http://localhost:3000/ventas"
+  private direccion="http://localhost:3000/ordenes"
 
   constructor(private http: HttpClient) { 
   }
 
-  registrarVenta(carrito:any):Observable<any>{
+  /*registrarVenta(carrito:any):Observable<any>{
     return this.http.post<any>(this.direccion+"/registrar_ventas", carrito);
   }
 
@@ -23,6 +23,13 @@ export class VentaService {
 
   obtenerMisVentas(codigo_productor:any):Observable<any>{
     return this.http.get<any>(this.direccion+"/mis_ventas/" + codigo_productor);
+  }*/
+
+  registrarVenta(orden_compra:any):Observable<any>{
+    return this.http.post<any>(this.direccion+"/registrar_orden", orden_compra);
   }
 
+  obtenerMisCompras(codigo_comprador:any):Observable<any>{
+    return this.http.get<any>(this.direccion+"/mis_compras/" + codigo_comprador);
+  }
 }

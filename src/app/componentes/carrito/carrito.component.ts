@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CarritoService } from 'src/app/servicios/carrito.service';
 import { LoginService } from 'src/app/servicios/login.service';
-import { VentaService } from 'src/app/servicios/venta.service';
 
 @Component({
   selector: 'app-carrito',
@@ -14,14 +14,15 @@ export class CarritoComponent {
   productos:any = CarritoService.obtenerProductos();
   usuario:any= LoginService.usuarioObtener();
 
-  constructor(private servicioVenta: VentaService) {
+  constructor(private router: Router) {
     for(let p of CarritoService.obtenerProductos()){
       p.precio = p.cantidad * p.precio_real;
+      console.log(p)
     }
     this.calcularTotal();
   }
 
-  comprar():void {
+  /*comprar():void {
     let carrito = [];
     for(let p of CarritoService.obtenerProductos()){
       carrito.push({"nombre_producto":p.nombre,"codigo_productor": p.codigo_productor,
@@ -37,6 +38,10 @@ export class CarritoComponent {
         console.log(error)
       }
     )
+  }*/
+
+  pagar():void {
+    this.router.navigate(['pago']);
   }
 
   operacion(nombre:any,codigo_productor:any,op:any): void{

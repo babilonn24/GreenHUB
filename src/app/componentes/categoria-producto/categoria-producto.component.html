@@ -36,7 +36,7 @@
                         <div class="zoom-in" (click)="verProducto(producto.nombre, producto.codigo_productor)">
                             <img [src]="producto.imagen || 'https://www.ludlowjute.com/wp-content/uploads/2023/12/Jute_Reusable.jpg'" class="card-img-top img-center img-fluid">
                             
-                            <div class="product-discount" *ngIf="producto.descuento !== '0'">
+                            <div class="product-discount" *ngIf="producto.descuento !== 0">
                                 <h6 class="m-0 product-discount-number">-{{producto.descuento}}%</h6>
                             </div>                    
                         </div>                
@@ -55,11 +55,11 @@
                                 </div>
 
                                 <div class="col-9">                            
-                                    <p class="card-text text-end product-price-number" *ngIf="producto.descuento === '0'">S/. {{producto.precio*(100-producto.descuento)/100}}</p>
-                                    <p class="card-text text-end product-price-number-blue" *ngIf="producto.descuento !== '0'">S/. {{producto.precio*(100-producto.descuento)/100}}</p>   
+                                    <p class="card-text text-end product-price-number" *ngIf="producto.descuento === 0">S/. {{producto.precio*(100-producto.descuento)/100}}</p>
+                                    <p class="card-text text-end product-price-number-blue" *ngIf="producto.descuento !== 0">S/. {{producto.precio*(100-producto.descuento)/100}}</p>   
                                 </div>
 
-                                <div class="product-discounted" *ngIf="producto.descuento !== '0'">
+                                <div class="product-discounted" *ngIf="producto.descuento !== 0">
                                     <p class="card-text text-end product-price-discounted">S/. {{producto.precio}}</p>      
                                 </div>
                             </div>                            

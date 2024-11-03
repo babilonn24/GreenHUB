@@ -36,16 +36,16 @@
 
                                 <div class="row">
                                     <div class="col-auto">
-                                        <p class="card-price-number-view" *ngIf="producto?.descuento === '0'">S/. {{producto?.precio*(100-producto?.descuento)/100 | number : '1.0-2'}}</p>                                                             
-                                        <p class="card-price-number-view-blue" *ngIf="producto?.descuento !== '0'">S/. {{producto?.precio*(100-producto?.descuento)/100 | number : '1.0-2'}}</p>
+                                        <p class="card-price-number-view" *ngIf="producto?.descuento === 0">{{producto?.precio*(100-producto?.descuento)/100 | number : '1.0-2'}} $</p>                                                             
+                                        <p class="card-price-number-view-blue" *ngIf="producto?.descuento !== 0">{{producto?.precio*(100-producto?.descuento)/100 | number : '1.0-2'}} $</p>
                                     </div>
 
-                                    <div class="col px-0 pt-2" *ngIf="producto?.descuento !== '0'">
+                                    <div class="col px-0 pt-2" *ngIf="producto?.descuento !== 0">
                                         <span class="badge product-discount-view">-{{producto?.descuento}}%</span>
                                     </div>
                                 </div>
                                 
-                                <p class="card-price-number-original-view" *ngIf="producto?.descuento !== '0'">S/. {{producto?.precio}}</p>
+                                <p class="card-price-number-original-view" *ngIf="producto?.descuento !== 0">{{producto?.precio}} $</p>
                             </div>                   
                         </div>
                     </div>

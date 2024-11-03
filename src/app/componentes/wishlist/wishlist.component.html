@@ -8,7 +8,7 @@
                         <div class="col-3 zoom-in" style="padding: 0px; border-radius: 0px;" (click)="verProducto(item.nombre, item.codigo_productor)">
                             <img [src]="item.imagen || 'https://www.ludlowjute.com/wp-content/uploads/2023/12/Jute_Reusable.jpg'" class="card-img-top img-center img-fluid">
                             
-                            <div class="product-discount" *ngIf="item.descuento !== '0'">
+                            <div class="product-discount" *ngIf="item.descuento !== 0">
                                 <h6 class="m-0 product-discount-number">-{{item.descuento}}%</h6>
                             </div>  
                         </div>
@@ -40,11 +40,11 @@
                                     <div class="col">
                                         <div class="row">
                                             <div class="col">                                           
-                                                <p class="card-text text-end product-price-number" *ngIf="item.descuento === '0'">S/. {{item.precio*(100-item.descuento)/100 | number : '1.0-2'}}</p>
-                                                <p class="card-text text-end product-price-number-blue" *ngIf="item.descuento !== '0'">S/. {{item.precio*(100-item.descuento)/100 | number : '1.0-2'}}</p> 
+                                                <p class="card-text text-end product-price-number" *ngIf="item.descuento === 0">{{item.precio*(100-item.descuento)/100 | number : '1.0-2'}} $</p>
+                                                <p class="card-text text-end product-price-number-blue" *ngIf="item.descuento !== 0">{{item.precio*(100-item.descuento)/100 | number : '1.0-2'}} $</p> 
                                                 
-                                                <div class="pt-0" *ngIf="item.descuento !== '0'">
-                                                    <p class="card-text text-end product-price-discounted">S/. {{item.precio | number : '1.0-2'}}</p>   
+                                                <div class="pt-0" *ngIf="item.descuento !== 0">
+                                                    <p class="card-text text-end product-price-discounted">{{item.precio | number : '1.0-2'}} $</p>   
                                                 </div>
                                             </div>
 
