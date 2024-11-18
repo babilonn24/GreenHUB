@@ -22,6 +22,7 @@ import { ChatbotComponent } from './componentes/chatbot/chatbot.component';
 import { WishlistComponent } from './componentes/wishlist/wishlist.component';
 import { PagoComponent } from './componentes/pago/pago.component';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { MisPuntosComponent } from './componentes/mis-puntos/mis-puntos.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { NgxPayPalModule } from 'ngx-paypal';
     CategoriaProductoComponent,
     ChatbotComponent,
     WishlistComponent,
-    PagoComponent
+    PagoComponent,
+    MisPuntosComponent
   ],
   imports: [
     BrowserModule,

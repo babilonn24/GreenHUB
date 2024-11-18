@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/servicios/login.service';
+import { GreenpointsService } from 'src/app/servicios/greenpoints.service';
 import { CarritoService } from 'src/app/servicios/carrito.service';
 import { VentaService } from 'src/app/servicios/venta.service';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
@@ -17,7 +18,7 @@ export class PagoComponent {
   productos:any = CarritoService.obtenerProductos();
   usuario:any= LoginService.usuarioObtener();
 
-  constructor(private servicioVenta: VentaService, private router: Router) {
+  constructor(private servicioVenta: VentaService, private router: Router, private servicioGreenPoints: GreenpointsService) {
     for(let p of CarritoService.obtenerProductos()){
       p.precio = p.cantidad * p.precio_real;
     }
@@ -60,6 +61,7 @@ export class PagoComponent {
             console.log("Detalles");
             console.log(details);
             this.registrarCompra(details);
+            this.registrarGreenPoints();
           });
         },
         onApprove: (data:any, actions) => {
@@ -131,7 +133,7 @@ export class PagoComponent {
         name: p.nombre,
         unit_amount: {
           currency_code: "USD",
-          value: p.precio_real.toFixed(2),
+          value: p.precio_real,
         },       
         quantity: p.cantidad.toString()  
       };
@@ -140,10 +142,26 @@ export class PagoComponent {
 
     const carritoPaypal = {
       items: items,
-      total: this.total.toFixed(2)
+      total: this.total
     }
     console.log("carritoPaypal");
     console.log(carritoPaypal);
     return carritoPaypal;
+  }
+
+  registrarGreenPoints(): void{
+    this.servicioGreenPoints.registrarPuntosPorCompra(
+      {
+        "codigo_usuario": LoginService.usuarioObtener().dni_ruc,
+        "total": this.total
+      }
+    ).subscribe(
+      (data)=> {
+        //this.router.navigate(['']);
+        console.log('success')
+      },(err)=> {
+        console.log(err)
+      }   
+    );
   }
 }

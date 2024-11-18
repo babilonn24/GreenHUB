@@ -17,9 +17,9 @@ export class CarritoComponent {
   constructor(private router: Router) {
     for(let p of CarritoService.obtenerProductos()){
       p.precio = p.cantidad * p.precio_real;
-      console.log(p)
     }
     this.calcularTotal();
+    console.log(this.carrito.obtenerProductos())
   }
 
   /*comprar():void {
@@ -56,6 +56,7 @@ export class CarritoComponent {
       }
     }
     this.calcularTotal()
+    console.log(this.carrito.obtenerProductos())
   }
 
   eliminar(producto:any): void{

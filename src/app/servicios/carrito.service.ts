@@ -14,7 +14,7 @@ export class CarritoService {
   static agregar(producto:any): void{
     producto.cantidad = 1;
     producto.precio_sin_descuento = producto.precio;
-    producto.precio_real = producto.precio-producto.descuento*producto.precio/100;
+    producto.precio_real = parseFloat((producto.precio-producto.descuento*producto.precio/100).toFixed(2));
     if(LoginService.usuarioObtener() && LoginService.usuarioObtener().dni_ruc != producto.codigo_productor && !this.existeElementoCarrito(producto))
       this.carrito.push(producto);
   }

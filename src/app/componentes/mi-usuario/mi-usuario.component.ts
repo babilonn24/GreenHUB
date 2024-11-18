@@ -76,6 +76,10 @@ export class MiUsuarioComponent {
     this.router.navigate(['agregar-producto']);
   }
 
+  verGreenPoints(): void{
+    this.router.navigate(['mis-puntos']);
+  }
+
   verProducto(nombre:any, codigo_productor:any): void {
     if(LoginService.usuarioObtener() && LoginService.usuarioObtener().dni_ruc == codigo_productor)
       this.router.navigate(['mi-producto/'+codigo_productor+'/'+nombre]);

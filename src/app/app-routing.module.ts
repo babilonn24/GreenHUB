@@ -16,12 +16,14 @@ import { ModificarProductoComponent } from './componentes/modificar-producto/mod
 import { CategoriaProductoComponent } from './componentes/categoria-producto/categoria-producto.component';
 import { PagoComponent } from './componentes/pago/pago.component';
 import { authGuard } from './guardia/guardia';
+import { MisPuntosComponent } from './componentes/mis-puntos/mis-puntos.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'agregar-usuario', component: AgregarUsuarioComponent },
   { path: 'agregar-producto', component: AgregarProductoComponent, canActivate:[authGuard]},
   { path: 'mi-usuario', component: MiUsuarioComponent, canActivate:[authGuard]},
+  { path: 'mis-puntos', component: MisPuntosComponent, canActivate:[authGuard] },
   { path: 'ver-usuario/:dni_ruc', component: VerUsuarioComponent },
   { path: 'mi-producto/:codigo_productor/:nombre', component: MiProductoComponent, canActivate:[authGuard]},
   { path: 'ver-producto/:codigo_productor/:nombre', component: VerProductoComponent },
